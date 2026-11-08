@@ -7,6 +7,7 @@ import {
 import { INSTAGRAM, LOGO, PHONE_DISPLAY, PHOTOS, SERVICES, WHATSAPP } from "@/components/site/data";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { Gallery } from "@/components/site/Gallery";
+import { ScrollFX } from "@/components/site/ScrollFX";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,7 +45,7 @@ function WhatsBtn({ children, msg, className = "" }: { children: React.ReactNode
 function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/80 backdrop-blur-md">
+    <header data-nav className="fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-500 [&.nav-scrolled]:border-border [&.nav-scrolled]:bg-background/85 [&.nav-scrolled]:backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:h-20">
         <a href="#topo" className="flex items-center gap-3">
           <img src={LOGO} alt="Lava Jato do Tadeu" className="h-10 w-10 rounded-sm bg-light object-contain p-0.5 md:h-12 md:w-12" />
@@ -139,9 +140,9 @@ function About() {
     <section id="sobre" className="bg-light py-24 text-light-foreground md:py-32">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:grid-cols-2">
         <Reveal className="relative">
-          <img src={PHOTOS.haval} alt="Haval com pintura espelhada no box do Lava Jato do Tadeu" loading="lazy" className="aspect-[4/5] w-full rounded-sm object-cover" />
+          <div className="overflow-hidden rounded-sm"><img data-water src={PHOTOS.haval} alt="Haval com pintura espelhada no box do Lava Jato do Tadeu" loading="lazy" className="aspect-[4/5] w-full object-cover" /></div>
           <div className="absolute -bottom-6 -right-4 hidden w-48 overflow-hidden rounded-sm border-4 border-light md:block">
-            <img src={PHOTOS.triton} alt="Mitsubishi Triton" loading="lazy" className="aspect-square w-full object-cover" />
+            <img data-water src={PHOTOS.triton} alt="Mitsubishi Triton" loading="lazy" className="aspect-square w-full object-cover" />
           </div>
         </Reveal>
         <Reveal delay={0.15}>
@@ -220,13 +221,13 @@ function Differentials() {
           <div className="flex justify-center"><SectionLabel>Diferenciais</SectionLabel></div>
           <h2 className="font-display text-4xl font-black uppercase md:text-5xl">Por que escolher o Tadeu</h2>
         </Reveal>
-        <div className="grid gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-          {DIFS.map((d, i) => (
-            <Reveal key={d.t} delay={i * 0.06} className="group bg-card p-8 transition-colors hover:bg-secondary">
+        <div data-scrub className="grid gap-px overflow-hidden rounded-sm border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          {DIFS.map((d) => (
+            <div key={d.t} className="group bg-card p-8 transition-colors hover:bg-secondary">
               <d.icon className="mb-5 h-8 w-8 text-primary transition-transform group-hover:-rotate-6 group-hover:scale-110" />
               <h3 className="font-display text-lg font-extrabold uppercase">{d.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{d.d}</p>
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>
@@ -321,6 +322,7 @@ function Footer() {
 function Index() {
   return (
     <main className="bg-background text-foreground">
+      <ScrollFX />
       <Header />
       <Hero />
       <About />
