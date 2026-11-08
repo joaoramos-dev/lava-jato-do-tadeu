@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight, Car, Clock, Droplets, Home, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Store, X,
 } from "lucide-react";
-import { GALLERY, INSTAGRAM, LOGO, PHONE_DISPLAY, PHOTOS, SERVICES, WHATSAPP } from "@/components/site/data";
+import { INSTAGRAM, LOGO, PHONE_DISPLAY, PHOTOS, SERVICES, WHATSAPP } from "@/components/site/data";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { Gallery } from "@/components/site/Gallery";
 
@@ -319,7 +319,6 @@ function Footer() {
 }
 
 function Index() {
-  void GALLERY;
   return (
     <main className="bg-background text-foreground">
       <Header />
