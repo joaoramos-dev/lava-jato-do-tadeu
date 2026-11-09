@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Animation roles: Lenis = global smooth scroll, GSAP+ScrollTrigger = scroll-linked effects via data-attributes in src/components/site/ScrollFX.tsx (dynamic-imported in useEffect for SSR safety), Motion = UI state/microinteractions. Why: avoids library conflicts and matches the spec.
