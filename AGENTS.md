@@ -30,3 +30,6 @@ use the editor.
 <!-- LOVABLE:END -->
 
 - Animation roles: Lenis = global smooth scroll, GSAP+ScrollTrigger = scroll-linked effects via data-attributes in src/components/site/ScrollFX.tsx (dynamic-imported in useEffect for SSR safety), Motion = UI state/microinteractions. Why: avoids library conflicts and matches the spec.
+- Cinematic scenes live in a separate presentation module; desktop pinning becomes normal document flow on mobile and reduced-motion devices to keep navigation usable.
+- Contact data is centralized; MapLink selects Apple Maps after hydration on Apple devices and Google Maps elsewhere to avoid SSR mismatches.
+- Review excerpts are attributed static source data until an authorized Google connection supplies updates; never imply that a static collection refreshes live.
