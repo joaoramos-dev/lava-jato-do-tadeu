@@ -301,6 +301,9 @@ function Footer() {
         <div className="md:col-span-2">
           <img src={LOGO} alt="Lava Jato do Tadeu" className="h-20 w-20 rounded-sm bg-light object-contain p-1" />
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">Estética e higienização automotiva. Loja física (Loja 4) e atendimento a domicílio.</p>
+          <a href={MAPS} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
+            <MapPin className="h-4 w-4 text-primary" /> {ADDRESS}
+          </a>
         </div>
         <div>
           <p className="mb-4 font-display font-extrabold uppercase">Navegação</p>
