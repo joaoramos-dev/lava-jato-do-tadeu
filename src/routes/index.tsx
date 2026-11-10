@@ -13,7 +13,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Lava Jato do Tadeu — Estética e Higienização Automotiva" },
-      { name: "description", content: "Polimento, vitrificação, higienização interna e lavagem detalhada. Loja física e atendimento a domicílio. Agende pelo WhatsApp." },
+      { name: "description", content: "Polimento, vitrificação, higienização interna e lavagem detalhada em Teresópolis - RJ. Agende pelo WhatsApp." },
       { property: "og:title", content: "Lava Jato do Tadeu — Estética Automotiva" },
       { property: "og:description", content: "Cuidado completo para carros e motos. Agende pelo WhatsApp (21) 97323-3825." },
       { property: "og:type", content: "website" },
@@ -94,7 +94,7 @@ function Hero() {
             Seu carro com <span className="text-primary">brilho</span> de vitrine.
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.25, ease }} className="mt-6 max-w-lg text-lg text-muted-foreground">
-            Estética e higienização automotiva com cuidado em cada detalhe: polimento, vitrificação, limpeza interna e lavagem técnica. Na nossa loja ou no seu endereço.
+            Estética e higienização automotiva com cuidado em cada detalhe: polimento, vitrificação, limpeza interna e lavagem técnica. Tudo na nossa loja em Teresópolis.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4, ease }} className="mt-10 flex flex-col gap-3 sm:flex-row">
             <WhatsBtn>Agendar pelo WhatsApp</WhatsBtn>
@@ -103,8 +103,7 @@ function Hero() {
             </motion.a>
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="mt-10 flex flex-wrap gap-6 text-sm text-muted-foreground">
-            <span className="flex items-center gap-2"><Store className="h-4 w-4 text-primary" /> Loja física · Loja 4</span>
-            <span className="flex items-center gap-2"><Home className="h-4 w-4 text-primary" /> Atendemos a domicílio</span>
+            <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Av. Feliciano Sodré, 171 · Teresópolis - RJ</span>
           </motion.div>
         </div>
         <div className="relative md:col-span-6">
@@ -152,11 +151,11 @@ function About() {
             O Lava Jato do Tadeu é especializado em estética e higienização automotiva. Tratamos cada veículo com atenção aos detalhes — da lavagem técnica à proteção da pintura — para que você receba seu carro ou moto limpo, protegido e com aparência renovada.
           </p>
           <p className="mt-4 text-lg leading-relaxed opacity-80">
-            Atendemos na nossa loja física, com box iluminado para inspeção da pintura, e também levamos o serviço até você com o atendimento a domicílio.
+            Atendemos na nossa loja física em Teresópolis, com box iluminado para inspeção minuciosa da pintura e estrutura completa para cuidar do seu veículo.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4">
-            <div className="rounded-sm border border-light-foreground/15 p-5"><Store className="mb-3 h-6 w-6 text-primary" /><p className="font-display font-extrabold">Loja física</p><p className="text-sm opacity-70">Loja 4</p></div>
-            <div className="rounded-sm border border-light-foreground/15 p-5"><Home className="mb-3 h-6 w-6 text-primary" /><p className="font-display font-extrabold">A domicílio</p><p className="text-sm opacity-70">Vamos até você</p></div>
+            <div className="rounded-sm border border-light-foreground/15 p-5"><Store className="mb-3 h-6 w-6 text-primary" /><p className="font-display font-extrabold">Loja física</p><p className="text-sm opacity-70">Av. Feliciano Sodré, 171 · Várzea</p></div>
+            <div className="rounded-sm border border-light-foreground/15 p-5"><Car className="mb-3 h-6 w-6 text-primary" /><p className="font-display font-extrabold">Carros e motos</p><p className="text-sm opacity-70">Atendemos todos os portes</p></div>
           </div>
         </Reveal>
       </div>
@@ -207,7 +206,7 @@ function Services() {
 const DIFS = [
   { icon: Droplets, t: "Produtos adequados", d: "Produtos específicos para cada superfície do veículo." },
   { icon: Sparkles, t: "Atenção aos detalhes", d: "Box com iluminação para inspeção minuciosa da pintura." },
-  { icon: Home, t: "Atendimento a domicílio", d: "Levamos o cuidado até a sua casa ou trabalho." },
+  { icon: MapPin, t: "Loja em Teresópolis", d: "Atendimento na Av. Feliciano Sodré, 171 - Várzea." },
   { icon: Car, t: "Carros e motos", d: "Do sedan à picape, passando pelas duas rodas." },
   { icon: ShieldCheck, t: "Proteção da pintura", d: "Vitrificação e cristalização para preservar o brilho." },
   { icon: MessageCircle, t: "Agendamento fácil", d: "Combine tudo rapidamente pelo WhatsApp." },
@@ -265,15 +264,14 @@ function Contact() {
         <Reveal>
           <SectionLabel>Contato</SectionLabel>
           <h2 className="font-display text-4xl font-black uppercase leading-none md:text-6xl">Agende seu horário <span className="text-primary">agora.</span></h2>
-          <p className="mt-6 max-w-md text-lg text-muted-foreground">Fale com a gente pelo WhatsApp para consultar valores, disponibilidade ou solicitar atendimento a domicílio.</p>
+          <p className="mt-6 max-w-md text-lg text-muted-foreground">Fale com a gente pelo WhatsApp para consultar valores, disponibilidade e agendar seu horário.</p>
           <WhatsBtn className="mt-10">Chamar no WhatsApp</WhatsBtn>
         </Reveal>
         <Reveal delay={0.15} className="space-y-3">
           {[
             { icon: Phone, l: "WhatsApp", v: PHONE_DISPLAY, h: WHATSAPP() },
             { icon: Instagram, l: "Instagram", v: "@lavajatodotadeu", h: INSTAGRAM },
-            { icon: MapPin, l: "Loja física · Loja 4", v: ADDRESS, h: MAPS },
-            { icon: Home, l: "Atendimento", v: "Atendemos a domicílio" },
+            { icon: MapPin, l: "Loja física", v: ADDRESS, h: MAPS },
             { icon: Clock, l: "Horário", v: "A confirmar — consulte pelo WhatsApp" },
           ].map((c) => {
             const inner = (
@@ -300,7 +298,7 @@ function Footer() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <img src={LOGO} alt="Lava Jato do Tadeu" className="h-20 w-20 rounded-sm bg-light object-contain p-1" />
-          <p className="mt-4 max-w-sm text-sm text-muted-foreground">Estética e higienização automotiva. Loja física (Loja 4) e atendimento a domicílio.</p>
+          <p className="mt-4 max-w-sm text-sm text-muted-foreground">Estética e higienização automotiva em Teresópolis - RJ.</p>
           <a href={MAPS} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary">
             <MapPin className="h-4 w-4 text-primary" /> {ADDRESS}
           </a>
