@@ -12,6 +12,18 @@ export const WHATSAPP = (msg = "Olá! Gostaria de agendar um serviço no Lava Ja
 export const INSTAGRAM = "https://instagram.com/lavajatodotadeu";
 export const ADDRESS = "Av. Feliciano Sodré, 171 - Várzea, Teresópolis - RJ, 25963-083";
 export const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
+export const APPLE_MAPS = `https://maps.apple.com/?q=${encodeURIComponent(`Lava Jato do Tadeu, ${ADDRESS}`)}`;
+export const MAP_LINK = (platform = "") => /iPhone|iPad|iPod|Mac/.test(platform) ? APPLE_MAPS : MAPS;
+export const OPENING_HOURS = { weekdays: "07:00 – 17:00", sunday: "07:00 – 14:00" };
+
+// Verbatim excerpts from the Google reviews supplied by the business. No invented ratings.
+export const REVIEWS = [
+  { name: "Anderson Andrade", text: "Excelente atendimento, limpeza impecável, os profissionais estão de parabéns, super recomendo.", guide: true },
+  { name: "Felipe Cordeiro", text: "Super indico o local para lavar o carro. Toda semana estou lá com o meu carango.", guide: true },
+  { name: "Glaydson Andrade", text: "Tenho uma segunda casa em Teresópolis, RJ, e sempre que venho, deixo minha Porsche no Lava Jato do Tadeu. O trabalho deles é impecável – cuidam do carro com um profissionalismo e atenção que são difíceis de encontrar.", guide: false },
+  { name: "Sabrina Xavier", text: "Sempre lavo meu carro com neste lava jato. Meninos educados, caprichosos, sabem lavar e cantar ao mesmo tempo, isso mostra alegria no que faz o capricho nós vemos. Recomendo!", guide: false },
+  { name: "Lucas Rodrigues", text: "Super rápido, com rapazes sempre educados. Vou toda semana!", guide: false },
+];
 
 export const PHOTOS = {
   haval: haval.url,

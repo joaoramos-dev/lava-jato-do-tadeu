@@ -122,3 +122,22 @@ body { font-family: var(--font-sans); }
 @utility speed-lines {
   background-image: repeating-linear-gradient(115deg, transparent 0 22px, color-mix(in oklab, var(--primary) 18%, transparent) 22px 24px);
 }
+
+/* Cinematic framing uses the same semantic palette as the rest of the site. */
+section[id] { scroll-margin-top: 80px; }
+.cinema-hero { height: 92svh; min-height: 700px; max-height: 1100px; }
+.hero-photo { object-position: 65% 58%; }
+.cinema-grade { background: linear-gradient(90deg, color-mix(in oklab, var(--background) 92%, transparent), color-mix(in oklab, var(--background) 45%, transparent) 48%, transparent 80%), linear-gradient(0deg, color-mix(in oklab, var(--background) 85%, transparent), transparent 55%, color-mix(in oklab, var(--background) 40%, transparent)); }
+.finish-stage { height: 85svh; min-height: 600px; max-height: 1050px; }
+.finish-photo { object-position: center 58%; }
+.scene-grade { background: linear-gradient(90deg, color-mix(in oklab, var(--background) 85%, transparent), transparent 80%), linear-gradient(0deg, color-mix(in oklab, var(--background) 75%, transparent), transparent 70%); }
+body { letter-spacing: 0; }
+@media (max-width: 767px) {
+  .cinema-hero { height: 90svh; min-height: 660px; }
+  .hero-photo { object-position: 63% center; }
+  .cinema-grade { background: linear-gradient(0deg, var(--background), color-mix(in oklab, var(--background) 65%, transparent) 45%, color-mix(in oklab, var(--background) 15%, transparent) 85%); }
+  .finish-stage { height: 80svh; min-height: 600px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
