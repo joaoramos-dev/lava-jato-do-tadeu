@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import {
-  ArrowRight, Car, Clock, Droplets, Home, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Store, X,
+  ArrowRight, Car, Clock, Droplets, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Store, X,
 } from "lucide-react";
 import { ADDRESS, INSTAGRAM, LOGO, MAPS, PHONE_DISPLAY, PHOTOS, SERVICES, WHATSAPP } from "@/components/site/data";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
