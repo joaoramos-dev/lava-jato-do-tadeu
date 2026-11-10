@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight, Car, Clock, Droplets, Home, Instagram, MapPin, Menu, MessageCircle, Phone, ShieldCheck, Sparkles, Star, Store, X,
 } from "lucide-react";
-import { INSTAGRAM, LOGO, PHONE_DISPLAY, PHOTOS, SERVICES, WHATSAPP } from "@/components/site/data";
+import { ADDRESS, INSTAGRAM, LOGO, MAPS, PHONE_DISPLAY, PHOTOS, SERVICES, WHATSAPP } from "@/components/site/data";
 import { Reveal, SectionLabel } from "@/components/site/Reveal";
 import { Gallery } from "@/components/site/Gallery";
 import { ScrollFX } from "@/components/site/ScrollFX";
@@ -272,7 +272,7 @@ function Contact() {
           {[
             { icon: Phone, l: "WhatsApp", v: PHONE_DISPLAY, h: WHATSAPP() },
             { icon: Instagram, l: "Instagram", v: "@lavajatodotadeu", h: INSTAGRAM },
-            { icon: MapPin, l: "Loja física", v: "Loja 4 · endereço completo a confirmar" },
+            { icon: MapPin, l: "Loja física · Loja 4", v: ADDRESS, h: MAPS },
             { icon: Home, l: "Atendimento", v: "Atendemos a domicílio" },
             { icon: Clock, l: "Horário", v: "A confirmar — consulte pelo WhatsApp" },
           ].map((c) => {
