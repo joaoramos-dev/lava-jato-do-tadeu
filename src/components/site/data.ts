@@ -10,6 +10,8 @@ export const PHONE_DISPLAY = "(21) 97323-3825";
 export const WHATSAPP = (msg = "Olá! Gostaria de agendar um serviço no Lava Jato do Tadeu.") =>
   `https://wa.me/5521973233825?text=${encodeURIComponent(msg)}`;
 export const INSTAGRAM = "https://instagram.com/lavajatodotadeu";
+export const ADDRESS = "Av. Feliciano Sodré, 171 - Várzea, Teresópolis - RJ, 25963-083";
+export const MAPS = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ADDRESS)}`;
 
 export const PHOTOS = {
   haval: haval.url,
