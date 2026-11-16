@@ -33,3 +33,4 @@ use the editor.
 - Cinematic scenes live in a separate presentation module; desktop pinning becomes normal document flow on mobile and reduced-motion devices to keep navigation usable.
 - Contact data is centralized; MapLink selects Apple Maps after hydration on Apple devices and Google Maps elsewhere to avoid SSR mismatches.
 - Review excerpts are attributed static source data until an authorized Google connection supplies updates; never imply that a static collection refreshes live.
+- WebGL photo effects use OGL shaders in src/components/site/LiquidImage.tsx (dynamic-imported, <img> kept as fallback, disabled on reduced motion). Why: lightweight 2D image shaders, no 3D models needed.

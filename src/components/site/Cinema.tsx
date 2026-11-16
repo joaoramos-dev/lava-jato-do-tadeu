@@ -4,12 +4,17 @@ import { ArrowDown, ArrowRight, MapPin, MessageCircle, Plus, Minus } from "lucid
 import { Button } from "@/components/ui/button";
 import { PHOTOS, PHONE_DISPLAY, SERVICES, WHATSAPP } from "./data";
 import { MapLink } from "./MapLink";
+import { LiquidImage } from "./LiquidImage";
+
+const HERO_POS: [number, number] = [0.65, 0.42];
+const FINISH_POS: [number, number] = [0.5, 0.42];
 
 export function CinematicHero() {
   return (
     <section id="topo" className="cinema-hero relative isolate overflow-hidden">
       <div data-hero-image className="absolute inset-0 -z-20">
         <img src={PHOTOS.haval} fetchPriority="high" alt="Haval com acabamento espelhado no Lava Jato do Tadeu" className="hero-photo h-full w-full object-cover" />
+        <LiquidImage src={PHOTOS.haval} position={HERO_POS} />
       </div>
       <div className="cinema-grade absolute inset-0 -z-10" />
       <div className="cinema-frame pointer-events-none absolute inset-5 top-28 hidden border border-foreground/15 md:block" />
@@ -39,6 +44,7 @@ export function FinishScene() {
       <div data-finish-stage className="finish-stage relative isolate overflow-hidden">
         <img src={PHOTOS.bmw} alt="BMW Série 3 com pintura iluminada no box" className="finish-photo absolute inset-0 -z-20 h-full w-full object-cover" loading="lazy" />
         <img data-finish-next src={PHOTOS.triton} alt="Mitsubishi Triton preta com acabamento espelhado" className="finish-photo absolute inset-0 -z-20 h-full w-full object-cover opacity-0" loading="lazy" />
+        <div className="absolute inset-0 -z-20"><LiquidImage src={PHOTOS.bmw} next={PHOTOS.triton} scrollTarget="[data-finish]" readyTarget="[data-finish-stage]" position={FINISH_POS} /></div>
         <div className="scene-grade absolute inset-0 -z-10" />
         <div className="relative mx-auto flex h-full max-w-[1440px] items-end px-6 pb-16 md:px-14 md:pb-20">
           <div className="max-w-xl">
