@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Expand, X } from "lucide-react";
 import { GALLERY } from "./data";
 import { Reveal, SectionLabel } from "./Reveal";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 const CATS = ["Todos", "SUV", "Sedan", "Picape", "Moto"] as const;
 
@@ -16,8 +17,8 @@ export function Gallery() {
     if (open === null) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(null);
-      if (e.key === "ArrowRight") setOpen((i) => (i! + 1) % items.length);
-      if (e.key === "ArrowLeft") setOpen((i) => (i! - 1 + items.length) % items.length);
+      if (e.key === "ArrowRight") setOpen((i) => i === null ? null : (i + 1) % items.length);
+      if (e.key === "ArrowLeft") setOpen((i) => i === null ? null : (i - 1 + items.length) % items.length);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -33,7 +34,7 @@ export function Gallery() {
           </div>
           <div className="flex flex-wrap gap-2">
             {CATS.map((c) => (
-              <button
+              <Button variant="outline" aria-pressed={cat === c}
                 key={c}
                 onClick={() => setCat(c)}
                 className={cn(
@@ -42,7 +43,7 @@ export function Gallery() {
                 )}
               >
                 {c}
-              </button>
+              </Button>
             ))}
           </div>
         </Reveal>
