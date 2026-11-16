@@ -54,7 +54,7 @@ export function ScrollFX() {
           if (!scene || !stage) return;
           const timeline = gsap.timeline({ scrollTrigger: { trigger: scene, start: "top top", end: "+=100%", pin: stage, scrub: 0.7, anticipatePin: 1 } });
           timeline.to("[data-finish-next]", { opacity: 1, duration: 0.5 }, 0.15)
-            .to("[data-finish-title]", { y: -35, duration: 1 }, 0)
+            .fromTo("[data-finish-next]", { scale: 1.06 }, { scale: 1, duration: 1 }, 0)
             .to("[data-finish-progress]", { scaleX: 1, duration: 1, ease: "none" }, 0);
           return () => timeline.kill();
         });
