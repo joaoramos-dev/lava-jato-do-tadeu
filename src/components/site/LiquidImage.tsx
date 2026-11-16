@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Camada WebGL (OGL) sobre fotos reais: ondulação líquida que segue cursor/toque
- * e, opcionalmente, transição de dissolução líquida entre duas fotos ligada à rolagem.
+ * Camada WebGL (OGL) sobre fotos reais: transição de dissolução líquida entre duas fotos ligada à rolagem.
  * A <img> original permanece como fallback; só é ocultada quando o shader está pronto.
  */
 type Props = {
@@ -23,7 +22,7 @@ const fragment = /* glsl */ `
 precision highp float;
 uniform sampler2D tA; uniform sampler2D tB;
 uniform vec2 uRes; uniform vec2 uSizeA; uniform vec2 uSizeB; uniform vec2 uPos;
-uniform vec2 uMouse; uniform float uHover; uniform float uTime; uniform float uProgress;
+uniform float uTime; uniform float uProgress;
 varying vec2 vUv;
 
 vec2 cover(vec2 uv, vec2 size){
@@ -38,14 +37,8 @@ float fbm(vec2 p){ float v = 0., a = .5; for(int i=0;i<4;i++){ v += a*noise(p); 
 
 void main(){
   vec2 uv = vUv;
-  float aspect = uRes.x / uRes.y;
-  vec2 d = (uv - uMouse) * vec2(aspect, 1.);
-  float dist = length(d);
-  // ondas concêntricas como uma gota sobre verniz vitrificado
-  float ripple = sin(dist * 38. - uTime * 4.) * exp(-dist * 6.) * uHover;
-  vec2 offset = normalize(d + 1e-5) * ripple * 0.012;
   // leve escorrimento contínuo de água
-  offset += (vec2(fbm(uv * 3. + uTime * .08), fbm(uv * 3. - uTime * .06)) - .5) * 0.006;
+  vec2 offset = (vec2(fbm(uv * 3. + uTime * .08), fbm(uv * 3. - uTime * .06)) - .5) * 0.006;
 
   // dissolução líquida entre fotos
   float n = fbm(uv * 4. + vec2(0., uTime * .05));
@@ -56,8 +49,8 @@ void main(){
   vec4 b = texture2D(tB, cover(uv + offset - wave, uSizeB));
   vec4 col = mix(b, a, edge);
 
-  // brilho especular na crista das ondas e na borda da transição
-  float spec = pow(max(ripple, 0.), 2.) * 1.2 + sin(edge * 3.14159) * .18;
+  // brilho especular na borda da transição
+  float spec = sin(edge * 3.14159) * .18;
   col.rgb += vec3(spec);
   gl_FragColor = col;
 }`;
@@ -101,7 +94,7 @@ export function LiquidImage({ src, next, scrollTarget, readyTarget, position = [
         tA: { value: A.tex }, tB: { value: B.tex },
         uSizeA: { value: [A.w, A.h] }, uSizeB: { value: [B.w, B.h] },
         uRes: { value: [1, 1] }, uPos: { value: position },
-        uMouse: { value: [0.5, 0.5] }, uHover: { value: 0 }, uTime: { value: 0 },
+        uTime: { value: 0 },
         uProgress: { value: 0 },
       };
       const program = new Program(gl, { vertex, fragment, uniforms });
@@ -119,20 +112,6 @@ export function LiquidImage({ src, next, scrollTarget, readyTarget, position = [
       const ro = new ResizeObserver(resize);
       ro.observe(host);
 
-      const target = [0.5, 0.5];
-      let hoverTarget = 0;
-      const area = host.closest("section") ?? host;
-      const onMove = (e: PointerEvent) => {
-        const r = host.getBoundingClientRect();
-        target[0] = (e.clientX - r.left) / r.width;
-        target[1] = 1 - (e.clientY - r.top) / r.height;
-        hoverTarget = 1;
-      };
-      const onLeave = () => { hoverTarget = 0; };
-      area.addEventListener("pointermove", onMove as EventListener, { passive: true });
-      area.addEventListener("pointerdown", onMove as EventListener, { passive: true });
-      area.addEventListener("pointerleave", onLeave);
-
       const scrollEl = scrollTarget ? document.querySelector(scrollTarget) : null;
       let visible = true;
       const io = new IntersectionObserver(([en]) => { visible = !!en?.isIntersecting; });
@@ -143,11 +122,6 @@ export function LiquidImage({ src, next, scrollTarget, readyTarget, position = [
       const loop = () => {
         raf = requestAnimationFrame(loop);
         if (!visible) return;
-        const m = uniforms.uMouse.value;
-        m[0] = m[0]! + (target[0]! - m[0]!) * 0.08;
-        m[1] = m[1]! + (target[1]! - m[1]!) * 0.08;
-        uniforms.uHover.value += (hoverTarget - uniforms.uHover.value) * 0.05;
-        if (hoverTarget > 0) hoverTarget = Math.max(0, hoverTarget - 0.004);
         uniforms.uTime.value = (performance.now() - start) / 1000;
         if (scrollEl) {
           const r = scrollEl.getBoundingClientRect();
@@ -162,9 +136,6 @@ export function LiquidImage({ src, next, scrollTarget, readyTarget, position = [
       cleanup = () => {
         cancelAnimationFrame(raf);
         ro.disconnect(); io.disconnect();
-        area.removeEventListener("pointermove", onMove as EventListener);
-        area.removeEventListener("pointerdown", onMove as EventListener);
-        area.removeEventListener("pointerleave", onLeave);
         ready?.classList.remove("gl-ready");
         canvas.remove();
         gl.getExtension("WEBGL_lose_context")?.loseContext();

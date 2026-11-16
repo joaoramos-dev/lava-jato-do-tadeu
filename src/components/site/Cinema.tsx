@@ -6,7 +6,6 @@ import { PHOTOS, PHONE_DISPLAY, SERVICES, WHATSAPP } from "./data";
 import { MapLink } from "./MapLink";
 import { LiquidImage } from "./LiquidImage";
 
-const HERO_POS: [number, number] = [0.65, 0.42];
 const FINISH_POS: [number, number] = [0.5, 0.42];
 
 export function CinematicHero() {
@@ -14,7 +13,6 @@ export function CinematicHero() {
     <section id="topo" className="cinema-hero relative isolate overflow-hidden">
       <div data-hero-image className="absolute inset-0 -z-20">
         <img src={PHOTOS.haval} fetchPriority="high" alt="Haval com acabamento espelhado no Lava Jato do Tadeu" className="hero-photo h-full w-full object-cover" />
-        <LiquidImage src={PHOTOS.haval} position={HERO_POS} />
       </div>
       <div className="cinema-grade absolute inset-0 -z-10" />
       <div className="cinema-frame pointer-events-none absolute inset-5 top-28 hidden border border-foreground/15 md:block" />
