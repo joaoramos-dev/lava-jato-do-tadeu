@@ -1,5 +1,6 @@
 # Tasks
-- [ ] Criar direção cinematográfica e animações ligadas à rolagem.
-- [ ] Tornar todas as menções de contato e endereço clicáveis; incluir Apple Maps.
-- [ ] Exibir avaliações reais enviadas e preparar conexão com Google para leitura direta.
+- [x] Criar direção cinematográfica e animações ligadas à rolagem.
+- [x] Tornar todas as menções de contato e endereço clicáveis; incluir Apple Maps.
+- [x] Exibir avaliações reais enviadas.
+- [ ] Leitura direta do Google: conexão recusada; depende de autorização do usuário.
 - [ ] Aplicar horários da imagem e testar página no desktop e celular.

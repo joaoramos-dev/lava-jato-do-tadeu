@@ -56,6 +56,7 @@ export function FinishScene() {
 export function ServiceStudio() {
   const [active, setActive] = useState(0);
   const service = SERVICES[active];
+  if (!service) return null;
   return (
     <section id="servicos" className="bg-background py-20 md:py-28">
       <div className="mx-auto max-w-[1440px] px-6 md:px-14">
