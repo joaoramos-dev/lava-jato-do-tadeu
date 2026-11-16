@@ -144,8 +144,8 @@ export function LiquidImage({ src, next, scrollTarget, readyTarget, position = [
         raf = requestAnimationFrame(loop);
         if (!visible) return;
         const m = uniforms.uMouse.value;
-        m[0] += (target[0]! - m[0]!) * 0.08;
-        m[1] += (target[1]! - m[1]!) * 0.08;
+        m[0] = m[0]! + (target[0]! - m[0]!) * 0.08;
+        m[1] = m[1]! + (target[1]! - m[1]!) * 0.08;
         uniforms.uHover.value += (hoverTarget - uniforms.uHover.value) * 0.05;
         if (hoverTarget > 0) hoverTarget = Math.max(0, hoverTarget - 0.004);
         uniforms.uTime.value = (performance.now() - start) / 1000;
